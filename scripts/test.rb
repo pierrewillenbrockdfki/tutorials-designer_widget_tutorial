@@ -6,49 +6,28 @@ Orocos.initialize
 Orocos.load_typekit "base"
 
 class TestWidget < Qt::Widget
-    #slots :change_label!
     
     def initialize
-        puts "TestWidget constructor"
         super
-        puts "Before loading UI"
         @window = Vizkit.load(File.join(File.dirname(__FILE__),'testwidget.ui'))
-        #@but = Qt::PushButton.new("Change label!", self)
-        #@but.show
-        #@but.connect( SIGNAL :clicked ) { change_label! }
-      
-        @window.show
-        puts "UI loaded"
-        show
-        change_label!
+        @window.but_set_pos.connect(SIGNAL('clicked()')) {change_label!}
+        show     
     end
     
     def change_label!
-        #@window.mywidget.setLabelText("New Text :)")
-      
-        rbs = Types::Base::Samples::RigidBodyState.new
-        rbs.position[0] = 4
+        if(!@window.x_edit.text.empty? && !@window.y_edit.text.empty? && !@window.z_edit.text.empty?)
+            rbs = Types::Base::Samples::RigidBodyState.new
+            rbs.position[0] = Float(@window.x_edit.text)
+            rbs.position[1] = Float(@window.y_edit.text)
+            rbs.position[2] = Float(@window.z_edit.text)
+
+            # Enable Qt slots with Typelib types as arguments
+            @window.mywidget.extend QtTyplelibExtension
+            
+            # Send Typelib type :)
+            @window.mywidget.setPose(rbs)
+        end
         
-        
-        adapter = Vizkit::TypelibQtAdapter.new(@window.mywidget)
-      
-        # Set label text
-        ret = nil
-        realret = nil
-        realret = adapter.call_qt_method("setPose", [rbs], ret)
-        puts "realret: #{realret}"
-        puts "ret: #{ret}"
-        
-#        # Get label text
-#        ret = Data.new
-#        realret = nil
-#        realret = adapter.call_qt_method("getLabelText", [], ret)
-#        puts "realret: #{realret}"
-#        puts "ret: #{ret}"
-#        
-      
-        
-        #@window.mywidget.setPose(rbs)
     end
     
     def show

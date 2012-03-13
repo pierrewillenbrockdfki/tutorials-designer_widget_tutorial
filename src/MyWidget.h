@@ -13,13 +13,23 @@ public:
     virtual ~MyWidget();
     
 public slots:
-    void setPose(const base::samples::RigidBodyState &pose);
-    const QString getLabelText();
-    void setLabelText(const QString &text);
-    
+    base::samples::RigidBodyState getPose();
+    void setPose(const base::samples::RigidBodyState pose);
     
 private:
-    QLabel *label;
+    base::samples::RigidBodyState pose;
+    
+    QGroupBox* gbox;
+    QFormLayout* flay;
+    
+    QLabel* label_x;
+    QLabel* label_y;
+    QLabel* label_z;
+    
+    QLabel* l1;
+    QLabel* l2;
+    QLabel* l3;
+    
 };
 
 #endif /* MYWIDGET_H */
