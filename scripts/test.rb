@@ -10,12 +10,13 @@ class TestWidget < Qt::Widget
     def initialize
         super
         @window = Vizkit.load(File.join(File.dirname(__FILE__),'testwidget.ui'))
-        @window.but_set_pos.connect(SIGNAL('clicked()')) {change_label!}
+        @window.but_set_pos.connect(SIGNAL('clicked()')) {change_position}
         show     
     end
     
-    def change_label!
+    def change_position
         if(!@window.x_edit.text.empty? && !@window.y_edit.text.empty? && !@window.z_edit.text.empty?)
+            # Generate typelib type from user input
             rbs = Types::Base::Samples::RigidBodyState.new
             rbs.position[0] = Float(@window.x_edit.text)
             rbs.position[1] = Float(@window.y_edit.text)
@@ -37,6 +38,5 @@ class TestWidget < Qt::Widget
 end
 
 tw = TestWidget.new
-tw.show
 
 Vizkit.exec
