@@ -23,7 +23,7 @@ class TestWidget < Qt::Widget
             rbs.position[2] = Float(@window.z_edit.text)
 
             # Enable Qt slots with Typelib types as arguments
-            @window.mywidget.extend QtTyplelibExtension
+            @window.mywidget.extend QtTypelibExtension
             
             # Send Typelib type :)
             @window.mywidget.setPose(rbs)
