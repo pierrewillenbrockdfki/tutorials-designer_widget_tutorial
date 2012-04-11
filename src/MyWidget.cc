@@ -36,7 +36,7 @@ MyWidget::~MyWidget()
     delete l2;
     delete l3;
     delete gbox;
-    delete flay;
+    //flay already deleted with gbox;
 }
 
 base::samples::RigidBodyState MyWidget::getPose()
