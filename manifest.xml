@@ -10,4 +10,5 @@
   <depend package="base/types" />
   <depend package="qt4" />
   <depend package="qt-designer" />
+  <depend package="qt4-opengl" />
 </package>
