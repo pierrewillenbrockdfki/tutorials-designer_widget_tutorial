@@ -3,7 +3,7 @@
 
 #include <QtGui>
 
-#include <base/samples/rigid_body_state.h>
+#include <base/samples/RigidBodyState.hpp>
 
 class MyWidget : public QWidget
 {
