@@ -1,10 +1,7 @@
-rock_find_qt5(Core Gui Widgets UiPlugin REQUIRED)
+rock_find_qt5(Core Gui Widgets UiPlugin OpenGL Designer REQUIRED)
 
-INCLUDE_DIRECTORIES(${QT5_INCLUDE_DIRS})
 INCLUDE_DIRECTORIES(${Qt5Core_INCLUDE_DIRS})
 INCLUDE_DIRECTORIES(${Qt5Gui_INCLUDE_DIRS})
-INCLUDE_DIRECTORIES(${Qt5Widgets_INCLUDE_DIRS})
-INCLUDE_DIRECTORIES(${QT5UiPlugin_INCLUDE_DIRS})
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -31,7 +28,7 @@ rock_vizkit_widget(MyWidget
     DEPS Qt5::Core Qt5::Gui Qt5::Widgets
     DEPS_PKGCONFIG base-types base-lib
     DEPS_CMAKE
-    LIBS ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY} ${QT_QTOPENGL_LIBRARY} ${QT_QTDESIGNER_LIBRARY} 
+    LIBS ${QT5Core_LIBRARIES} ${Qt5Gui_LIBRARIES} ${QT5OpenGL_LIBRARIES} ${QT5Designer_LIBRARIES} 
 )
 
 rock_executable(mywidgetTest
