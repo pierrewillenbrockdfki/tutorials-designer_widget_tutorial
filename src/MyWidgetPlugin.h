@@ -1,12 +1,12 @@
 #ifndef MYWIDGETPLUGIN_H
 #define MYWIDGETPLUGIN_H
 
-#include <QtGui>
-#include <QtDesigner/QDesignerCustomWidgetInterface>
+#include <QtUiPlugin/QDesignerCustomWidgetInterface>
 
 class MyWidgetPlugin : public QObject, public QDesignerCustomWidgetInterface
 {
     Q_OBJECT
+    Q_PLUGIN_METADATA(IID "org.dfki-rock-tutorial")
     Q_INTERFACES(QDesignerCustomWidgetInterface)
 
 public:
