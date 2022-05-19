@@ -1,7 +1,7 @@
 #ifndef MYWIDGET_H
 #define MYWIDGET_H
 
-#include <QtGui>
+#include <QtWidgets>
 
 #include <base/samples/RigidBodyState.hpp>
 
@@ -11,9 +11,9 @@ class MyWidget : public QWidget
 public:
     MyWidget(QWidget *parent = 0);
     virtual ~MyWidget();
+    base::samples::RigidBodyState getPose();
     
 public slots:
-    base::samples::RigidBodyState getPose();
     void setPose(const base::samples::RigidBodyState pose);
     
 private:

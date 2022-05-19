@@ -1,8 +1,6 @@
 #include "MyWidgetPlugin.h"
 #include "MyWidget.h"
 
-Q_EXPORT_PLUGIN2(MyWidget, MyWidgetPlugin)
-
 MyWidgetPlugin::MyWidgetPlugin(QObject *parent)
     : QObject(parent)
 {
