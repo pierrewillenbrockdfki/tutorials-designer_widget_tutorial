@@ -1,7 +1,13 @@
 #ifndef MYWIDGET_H
 #define MYWIDGET_H
 
-#include <QtWidgets>
+#include <QWidget>
+
+QT_BEGIN_NAMESPACE
+class QGroupBox;
+class QFormLayout;
+class QLabel;
+QT_END_NAMESPACE
 
 #include <base/samples/RigidBodyState.hpp>
 

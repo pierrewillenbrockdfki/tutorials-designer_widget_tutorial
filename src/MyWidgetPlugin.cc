@@ -1,6 +1,11 @@
 #include "MyWidgetPlugin.h"
 #include "MyWidget.h"
 
+#if QT_VERSION < 0x050000
+#include <QtPlugin>
+Q_EXPORT_PLUGIN2(MyWidget, MyWidgetPlugin)
+#endif
+
 MyWidgetPlugin::MyWidgetPlugin(QObject *parent)
     : QObject(parent)
 {

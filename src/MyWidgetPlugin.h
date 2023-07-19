@@ -1,12 +1,20 @@
 #ifndef MYWIDGETPLUGIN_H
 #define MYWIDGETPLUGIN_H
 
+#include <QtCore/QObject>
+
+#if QT_VERSION >= 0x050000
 #include <QtUiPlugin/QDesignerCustomWidgetInterface>
+#else
+#include <QtDesigner/QDesignerCustomWidgetInterface>
+#endif
 
 class MyWidgetPlugin : public QObject, public QDesignerCustomWidgetInterface
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "org.dfki-rock-tutorial")
+#if QT_VERSION >= 0x050000
+    Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QDesignerCustomWidgetCollectionInterface")
+#endif
     Q_INTERFACES(QDesignerCustomWidgetInterface)
 
 public:
